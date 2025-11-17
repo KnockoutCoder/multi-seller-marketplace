@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+// userSchema represents users in the marketplace (buyers, sellers, admin)
+
 const userSchema = new mongoose.Schema(
     {
         name: {
