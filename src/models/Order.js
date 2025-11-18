@@ -25,13 +25,17 @@ const orderItemSchema = new mongoose.Schema({
     },
 });
 
+// main order schema - holds buyer info, items, total amount, and status
 const orderSchema = new mongoose.Schema(
     {
+        // the user who placed the order
         buyerId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: [true, 'Buyer ID is required'],
         },
+
+        // simple order workflow for now
         status: {
             type: String,
             enum: {
@@ -40,11 +44,15 @@ const orderSchema = new mongoose.Schema(
             },
             default: 'pending',
         },
+
+        // total cost of all order itesm
         totalAmount: {
             type: Number,
             required: true,
             min: [0, 'Total amount must be a positive number'],
         },
+
+        // array of order items, must have at least one
         items: {
             type: [orderItemSchema],
             required: [true, 'Order must have at least one item'],
@@ -57,10 +65,11 @@ const orderSchema = new mongoose.Schema(
     },
 },
 {
-    timestamps: true,
+    timestamps: true, // auto-manages createdAt and updatedAt fields
 }
 );
 
+// Mongoose model for the Orders collection
 const Order = mongoose.model('Order', orderSchema);
 
 export default Order;
