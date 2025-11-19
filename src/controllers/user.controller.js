@@ -1,6 +1,6 @@
 import * as userService from '../services/user.service.js';
 
-// user controller - hadnles HTTP requests and responses for user endpoints
+// user controller - handles HTTP requests and responses for user endpoints
 
 // create a new user - POST /users
 const createUser = async (req, res, next) => {
