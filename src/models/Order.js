@@ -18,7 +18,7 @@ const orderItemSchema = new mongoose.Schema({
     unitPrice: {
         type: Number,
         required: true,
-        min: [0, 'Unit price must be a positive number'];
+        min: [0, 'Unit price must be a positive number'],
     },
     subtotal: {
         type: Number,
