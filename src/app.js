@@ -19,6 +19,10 @@ app.use(helmet());
 // CORS middleware (allows cross-origin requests)
 app.use(cors());
 
+// Body parser middleware (parses JSON request bodies)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // health check endpoint
 app.get('/', (req, res) => {
     res.json({ message: 'KC Mart API is running' });
