@@ -1,4 +1,7 @@
-// centralized error handler middleware - handles all errors and returns appropriate HTTP responses
+/**
+ * Centralized Error Handler Middleware
+ * Handles all errors and returns appropriate HTTP responses
+ */
 const errorHandler = (err, req, res, next) => {
   // log the error for debugging
   console.error('Error:', err.message);

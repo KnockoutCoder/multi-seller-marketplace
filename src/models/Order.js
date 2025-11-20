@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
-// orderItemSchema represents a single item within an order
-
+/**
+ * Order Item Schema (embedded in Order)
+ * Represents a single item within an order
+ */
 const orderItemSchema = new mongoose.Schema({
     productId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -25,7 +27,10 @@ const orderItemSchema = new mongoose.Schema({
     },
 });
 
-// main order schema - holds buyer info, items, total amount, and status
+/**
+ * Order Schema
+ * Represents orders placed by buyers
+ */
 const orderSchema = new mongoose.Schema(
     {
         // the user who placed the order

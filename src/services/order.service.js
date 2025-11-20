@@ -2,9 +2,16 @@ import Order from '../models/Order.js';
 import Product from '../models/Product.js';
 import User from '../models/User.js';
 
-// order service - contains business logic for order operations
+/**
+ * Order Service
+ * Contains business logic for order operations
+ */
 
-// create a new order with multiple items
+/**
+ * Create a new order with multiple items
+ * @param {Object} orderData - Order data (buyerId, items: [{productId, quantity}])
+ * @returns {Promise<Object>} Created order
+ */
 const createOrder = async (orderData) => {
     const { buyerId, items } = orderData;
 
@@ -93,7 +100,11 @@ const createOrder = async (orderData) => {
     return order;
 };
 
-// get all orders with optional buyer filter
+/**
+ * Get all orders with optional buyer filter
+ * @param {Object} filters - Optional filters (buyerId)
+ * @returns {Promise<Array>} Array of orders
+ */
 const getOrders = async (filters = {}) => {
     const query = {};
 
@@ -116,7 +127,11 @@ const getOrders = async (filters = {}) => {
     return orders;
 };
 
-    // get a single order by ID
+/**
+ * Get a single order by ID
+ * @param {String} orderId - Order ID
+ * @returns {Promise<Object>} Order object
+ */
 const getOrderbyId = async (orderId) => {
     const order = await Order.findById(orderId)
         .populate('buyerId', 'name email')

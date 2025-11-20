@@ -1,8 +1,14 @@
 import * as orderService from '../services/order.service.js';
 
-// order controller - handles HTTP requests and responses for order endpoints
+/**
+ * Order Controller
+ * Handles HTTP requests and responses for order endpoints
+ */
 
-// create a new order - POST /orders
+/**
+ * Create a new order
+ * POST /orders
+ */
 const createOrder = async (req, res, next) => {
     try {
         const order = await orderService.createOrder(req.body);
@@ -12,7 +18,10 @@ const createOrder = async (req, res, next) => {
     }
 };
 
-// get all orders (with optional buyer filter) - GET /orders?buyerId=123
+/**
+ * Get all orders (with optional buyer filter)
+ * GET /orders?buyerId=123
+ */
 const getOrders = async (req, res, next) => {
     try {
         const filters = {};
@@ -29,7 +38,10 @@ const getOrders = async (req, res, next) => {
     }
 };
 
-// get a single order by ID - GET /orders/:id
+/**
+ * Get a single order by ID
+ * GET /orders/:id
+ */
 const getOrderById = async (req, res, next) => {
     try {
         const order = await orderService.getOrderById(req.params.id);

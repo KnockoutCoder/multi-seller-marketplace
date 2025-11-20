@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
-// productSchema represents products listed by sellers in the marketplace
-
+/**
+ * Product Schema
+ * Represents products sold by sellers in the marketplace
+ */
 const productSchema = new mongoose.Schema(
     {
         title: {

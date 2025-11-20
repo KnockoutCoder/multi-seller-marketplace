@@ -1,8 +1,14 @@
 import * as productService from '../services/product.service.js';
 
-// product controller - handles HTTP requests and responses for product endpoints
+/**
+ * Product Controller
+ * Handles HTTP requests and responses for product endpoints
+ */
 
-// create a new product - POST /products
+/**
+ * Create a new product
+ * POST /products
+ */
 const createProduct = async (req, res, next) => {
     try {
         const product = await productService.createProduct(req.body);
@@ -12,7 +18,10 @@ const createProduct = async (req, res, next) => {
     }
 };
 
-// get all active products (with optional filters) - GET /products?category=electronic&sellerId=123
+/**
+ * Get all active products (with optional filters)
+ * GET /products?category=electronics&sellerId=123
+ */
 const getProducts = async (req, res, next) => {
     try {
         const filters = {};
@@ -32,7 +41,10 @@ const getProducts = async (req, res, next) => {
     }
 };
 
-// get a single product by ID - GET /products/:id
+/**
+ * Get a single product by ID
+ * GET /products/:id
+ */
 const getProductById = async (req, res, next) => {
     try {
         const product = await productService.getProductById(req.params.id);
@@ -42,7 +54,10 @@ const getProductById = async (req, res, next) => {
     }
 };
 
-// update a product (partial update) - PATCH /products/:id
+/**
+ * Update a product (partial update)
+ * PATCH /products/:id
+ */
 const updateProduct = async (req, res, next) => {
     try {
         const product = await productService.updateProduct(req.params.id, req.body);
@@ -52,7 +67,10 @@ const updateProduct = async (req, res, next) => {
     }
 };
 
-// soft delete a product - DELETE /products/:id
+/**
+ * Soft delete a product
+ * DELETE /products/:id
+ */
 const deleteProduct = async (req, res, next) => {
     try {
         await productService.deleteProduct(req.params.id);

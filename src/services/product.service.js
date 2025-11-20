@@ -1,11 +1,19 @@
 import Product from '../models/Product.js';
 import User from '../models/User.js';
 
-// product creation: now with 100% more gatekeeping
+/**
+ * Product Service
+ * Contains business logic for product operations
+ */
 
+/**
+ * Create a new product
+ * @param {Object} productData - Product data (title, description, price, stock, category, sellerId)
+ * @returns {Promise<Object>} Created product
+ */
 const createProduct = async (productData) => {
     const seller = await User.findById(productData.sellerId);
-    // make sure the seller exists
+    // validate that sellerId exists and has role "seller
     if (!seller) {
         const error = new Error('Seller not found');
         error.statusCode = 404;
@@ -26,7 +34,11 @@ const createProduct = async (productData) => {
     
 };
 
-// get all active products with optional filters
+/**
+ * Get all active products with optional filters
+ * @param {Object} filters - Optional filters (category, sellerId)
+ * @returns {Promise<Array>} Array of active products
+ */
 const getProducts = async (filters = {}) => {
     const query = { isActive: true };
 
@@ -42,7 +54,11 @@ const getProducts = async (filters = {}) => {
     return products;
 };
 
-// get a single product by ID
+/**
+ * Get a single product by ID
+ * @param {String} productId - Product ID
+ * @returns {Promise<Object>} Product object
+ */
 const getProductById = async (productId) => {
     const product = await Product.findById(productId).populate('sellerId', 'name email');
 
@@ -61,7 +77,12 @@ const getProductById = async (productId) => {
     return product;
 };
 
-// update a product by ID (partial update)
+/**
+ * Update a product by ID (partial update)
+ * @param {String} productId - Product ID
+ * @param {Object} updateData - Fields to update
+ * @returns {Promise<Object>} Updated product
+ */
 const updateProduct = async (productId, updateData) => {
     // look up the product
     const product = await Product.findById(productId);
@@ -90,7 +111,11 @@ const updateProduct = async (productId, updateData) => {
     return product;
 };
 
-// soft delete a product (set isActive to false)
+/**
+ * Soft delete a product (set isActive to false)
+ * @param {String} productId - Product ID
+ * @returns {Promise<Object>} Updated product
+ */
 const deleteProduct = async (productId) => {
     const product = await Product.findById(productId);
 

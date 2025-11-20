@@ -1,21 +1,35 @@
 import User from '../models/User.js';
 
-// user service - contains business logic for user operations
+/**
+ * User Service
+ * Contains business logic for user operations
+ */
 
-// create a new user
+/**
+ * Create a new user
+ * @param {Object} userData - User data (name, email?, role)
+ * @returns {Promise<Object>} Created user
+ */
 const createUser = async (userData) => {
     const user = new User(userData);
     await user.save();
     return user;
 };
 
-// get all users
+/**
+ * Get all users
+ * @returns {Promise<Array>} Array of users
+ */
 const getUsers = async () => {
     const users = await User.find({});
     return users;
 }
 
-// get a single user by ID
+/**
+ * Get a single user by ID
+ * @param {String} userId - User ID
+ * @returns {Promise<Object>} User object
+ */
 const getUserById = async (userId) => {
     const user = await User.findById(userId);
 
@@ -28,8 +42,12 @@ const getUserById = async (userId) => {
     return user;
 };
 
-// update a user by ID (partial update)
-
+/**
+ * Update a user by ID (partial update)
+ * @param {String} userId - User ID
+ * @param {Object} updateData - Fields to update
+ * @returns {Promise<Object>} Updated user
+ */
 const updateUser = async (userId, updateData) => {
     const user = await User.findById(userId);
 
@@ -39,7 +57,7 @@ const updateUser = async (userId, updateData) => {
         throw error;
     }
 
-    //update only provided fields
+    // update only provided fields
     Object.keys(updateData).forEach((key) => {
         if (updateData[key] !== undefined) {
             user[key] = updateData[key];

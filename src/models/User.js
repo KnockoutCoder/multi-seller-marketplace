@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
-// userSchema represents users in the marketplace (buyers, sellers, admin)
-
+/**
+ * User Schema
+ * Represents users in the marketplace (buyers, sellers, admins)
+ */
 const userSchema = new mongoose.Schema(
     {
         name: {
@@ -12,7 +14,7 @@ const userSchema = new mongoose.Schema(
         email: {
             type: String,
             unique: true,
-            sparse: true,
+            sparse: true, // allows multuple null values
             trim: true,
             lowercase: true,
         },
@@ -26,7 +28,7 @@ const userSchema = new mongoose.Schema(
         },
     },
     {
-        timestamps: true,
+        timestamps: true, // adds createdAt and updatedAt fields
     }
 );
 

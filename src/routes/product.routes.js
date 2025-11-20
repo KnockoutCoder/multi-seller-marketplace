@@ -2,7 +2,10 @@ import express from 'express';
 const router = express.Router();
 import * as productController from '../controllers/product.controller.js';
 
-// product routes - all routes are prefixed with /products
+/**
+ * Product Routes
+ * All routes are prefixed with /products
+ */
 
 // POST /products - create a new product
 router.post('/', productController.createProduct);

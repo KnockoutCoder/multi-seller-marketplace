@@ -2,7 +2,10 @@ import express from 'express';
 const router = express.Router();
 import * as userController from '../controllers/user.controller.js';
 
-// user routes - all routes are prefixed with /users
+/**
+ * User Routes
+ * All routes are prefixed with /users
+ */
 
 // POST /users - creating a new user
 router.post('/', userController.createUser);
