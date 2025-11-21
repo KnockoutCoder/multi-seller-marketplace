@@ -132,7 +132,7 @@ const getOrders = async (filters = {}) => {
  * @param {String} orderId - Order ID
  * @returns {Promise<Object>} Order object
  */
-const getOrderbyId = async (orderId) => {
+const getOrderById = async (orderId) => {
     const order = await Order.findById(orderId)
         .populate('buyerId', 'name email')
         .populate({
@@ -156,5 +156,5 @@ const getOrderbyId = async (orderId) => {
 export {
     createOrder,
     getOrders,
-    getOrderbyId,
+    getOrderById,
 };
