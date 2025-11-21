@@ -127,7 +127,7 @@ const deleteProduct = async (productId) => {
     }
     
     // if product is already inactive, treat it as not found
-    if (product.isActive) {
+    if (!product.isActive) {
         const error = new Error('Product not found');
         error.StatusCode = 404;
         throw error;
