@@ -4,12 +4,12 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'KC Mart Marketplace API',
+      title: 'KC Mart Multi-Seller Marketplace API',
       version: '1.0.0',
       description: 'A RESTful API for a multi-seller marketplace built with Node.js, Express, and MongoDB',
       contact: {
-        name: 'API Support',
-        email: 'support@kcmart.com',
+        name: 'KC',
+        email: 'homebasedkc@gmail.com',
       },
     },
     servers: [
@@ -18,8 +18,8 @@ const options = {
         description: 'Development server (local only)',
       },
       {
-        url: 'https://your-api-url.onrender.com',
-        description: 'Production server (update this with your deployed URL)',
+        url: 'https://placeholder-api-url.onrender.com',
+        description: 'Production server (will update later with deployed URL)',
       },
     ],
     components: {
