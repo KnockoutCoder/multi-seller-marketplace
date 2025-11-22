@@ -1,6 +1,8 @@
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './config/swagger.js';
 import userRoutes from './routes/user.routes.js';
 import productRoutes from './routes/product.routes.js';
 import orderRoutes from './routes/order.routes.js';
@@ -22,6 +24,9 @@ app.use(cors());
 // Body parser middleware (parses JSON request bodies)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // health check endpoint
 app.get('/', (req, res) => {
