@@ -18,8 +18,8 @@ const options = {
         description: 'Development server (local only)',
       },
       {
-        url: 'https://placeholder-api-url.onrender.com',
-        description: 'Production server (will update later with deployed URL)',
+        url: 'https://kc-mart-api.onrender.com',
+        description: 'Production server (Render)',
       },
     ],
     components: {
